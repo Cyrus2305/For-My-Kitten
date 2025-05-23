@@ -1,125 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For My Kitten</title>
   <style>
-    body, html {
+    body {
       margin: 0;
       padding: 0;
-      scroll-behavior: smooth;
-      font-family: 'Cursive', sans-serif;
-    }
-
-    section {
-      width: 100%;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 2em;
-    }
-
-    #page1 {
-      background-color: #fddde6;
-      position: relative;
+      background-color: #FFD1DC; /* Cherry Blossom Pink */
+      color: #C21807; /* Cherry Red */
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-weight: bold;
       overflow: hidden;
+      position: relative;
     }
 
     h1 {
-      font-size: 2.5em;
-      color: #444;
-      animation: floatText 3s ease-in-out infinite;
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 2rem;
+      opacity: 0;
+      animation: floatIn 2s ease-in-out forwards;
+    }
+
+    @keyframes floatIn {
+      0% { transform: translate(-50%, -60%); opacity: 0; }
+      100% { transform: translate(-50%, -50%); opacity: 1; }
     }
 
     .heart {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #87CEFA;
-      clip-path: polygon(50% 0%, 61% 14%, 75% 14%, 85% 25%, 85% 39%, 75% 50%, 61% 50%, 50% 60%, 39% 50%, 25% 50%, 15% 39%, 15% 25%, 25% 14%, 39% 14%);
-      animation: floatHeart 6s infinite ease-in-out;
+      width: 2cm;
+      height: 2cm;
+      background-color: #89CFF0; /* Baby Blue */
+      clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0 35%);
+      animation: floatHearts 5s linear infinite;
     }
 
-    @keyframes floatText {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    @keyframes floatHearts {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
     }
 
-    @keyframes floatHeart {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) scale(1.5);
-        opacity: 0;
-      }
+    .big-heart {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 90px;
+      background-color: red;
+      clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0 35%);
+      cursor: pointer;
+      transition: transform 0.3s;
     }
 
-    .arrow {
-      font-size: 2em;
-      margin-top: 1em;
-      animation: bounce 1.5s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    #page2 {
-      background-color: #ffe4e1;
-    }
-
-    h2 {
-      font-size: 2em;
-      margin-bottom: 1em;
-      color: #333;
-    }
-
-    p {
-      font-size: 1.3em;
-      max-width: 600px;
-      margin-bottom: 1em;
-      line-height: 1.6em;
-      color: #555;
+    .big-heart:hover {
+      transform: translateX(-50%) scale(1.1);
     }
   </style>
 </head>
 <body>
-  <!-- Page 1: Welcome -->
-  <section id="page1">
-    <h1>Hey Kitten! You've stumbled into a little world I made just for you.</h1>
-    <a class="arrow-link" href="#page2"><div class="arrow">↓</div></a>
-  </section>
+  <h1>Hello there my Kitten! You have stumbled upon into a little world that I created only for you.</h1>
 
-  <!-- Page 2: Message -->
-  <section id="page2">
-    <h2>I Have Something to Say...</h2>
-    <p>From the moment we started talking, I knew there was something special about you. Every message, every shared laugh, and every sweet moment has meant the world to me.</p>
-    <p>This little world here is just a glimpse of how much I care. I made this space to tell you something from the heart:</p>
-    <p><strong>I like you. Deeply. Truly.</strong></p>
-    <p>If you're ready, scroll down a little more... 💖</p>
-    <a class="arrow-link" href="#page3"><div class="arrow">↓</div></a>
-  </section>
-
+  <!-- Animated Hearts -->
   <script>
-    for (let i = 0; i < 20; i++) {
+    function createHeart() {
       const heart = document.createElement('div');
-      heart.classList.add('heart');
+      heart.className = 'heart';
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.top = Math.random() * 100 + 'vh';
-      heart.style.animationDuration = 3 + Math.random() * 3 + 's';
-      document.getElementById('page1').appendChild(heart);
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
     }
+    setInterval(createHeart, 300);
   </script>
+
+  <!-- Big Heart for Navigation -->
+  <div class="big-heart" onclick="location.href='page2.html'"></div>
 </body>
 </html>
