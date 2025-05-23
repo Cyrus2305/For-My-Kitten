@@ -1,177 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For My Kitten</title>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page 6</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Comic Neue', cursive;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      background-color: #fdf6e3;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: darkred;
       text-align: center;
+      padding: 50px;
     }
-    .page {
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .page.active { display: flex; }
-    .heart {
-      width: 2cm;
-      height: 2cm;
-      background-color: #89CFF0;
-      clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 25% 100%, 0 35%);
-      animation: float 2s infinite ease-in-out;
-      margin: 10px;
-    }
-    @keyframes float {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-100px); opacity: 0; }
-    }
-    .big-red-heart {
-      width: 80px;
-      height: 80px;
-      background-color: red;
-      clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 25% 100%, 0 35%);
-      margin-top: 40px;
-      cursor: pointer;
-    }
-    .card {
-      background: #C8A2C8;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      max-width: 70%;
-      margin: 20px;
-    }
-    .nav-heart {
-      width: 40px;
-      height: 40px;
-      background-color: pink;
-      clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 25% 100%, 0 35%);
-      margin-top: 30px;
-      cursor: pointer;
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
     }
     button {
-      padding: 10px 20px;
-      margin: 10px;
-      font-size: 18px;
+      background-color: pink;
       border: none;
-      border-radius: 8px;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.5em;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    }
+    #message {
+      margin-top: 30px;
+      font-size: 1.8em;
+      color: #d63384;
+      display: none;
+    }
+    .heart {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2em;
       cursor: pointer;
     }
-    .confetti {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: red;
-      animation: confetti-fall 1s linear infinite;
-    }
-    @keyframes confetti-fall {
-      to { transform: translateY(100vh); }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
     }
   </style>
 </head>
 <body>
-  <div id="page1" class="page active" style="background-color: #FFD1DC; color: #C21807;">
-    <div>
-      <h1 style="font-weight: bold;">Hello there my Kitten!<br>You have stumbled upon into a little world that I created only for you.</h1>
-      <div class="heart"></div>
-      <div class="heart"></div>
-      <div class="heart"></div>
-      <div class="big-red-heart" onclick="nextPage()"></div>
-    </div>
-  </div>
+  <h1>Will you be my girlfriend?</h1>
+  <button onclick="celebrate()">YESSSS</button>
+  <button onclick="celebrate()">A hundred times YESSSS ❤️</button>
+  <div id="message">Thanks for letting me love you. I would cherish you for the rest of my life. I love you my darling.</div>
 
-  <div id="page2" class="page" style="background-color: #FFF9C4; color: black;">
-    <div class="card" id="card1">
-      <p>Since you came into my life, everything began to bloom.<br>The days got softer, the nights warmer, and my heart lighter.<br>You’ve changed my world just by being in it.</p>
-      <div class="nav-heart" onclick="showCard(2)"></div>
-    </div>
-    <div class="card" id="card2" style="display:none;">
-      <p>You make even the simplest moments feel magical.<br>With you, laughter is louder, smiles come easier, and love feels effortless.<br>I’m so grateful for you.</p>
-      <div class="nav-heart" onclick="showCard(3)"></div>
-    </div>
-    <div class="card" id="card3" style="display:none;">
-      <p>I just want you to know that...<br>My darling,<br>You will never be unloved by me<br>You are too well tangled in my soul.</p>
-      <div class="nav-heart" onclick="nextPage()"></div>
-    </div>
-  </div>
+  <div class="heart" onclick="window.location.href='page7.html'">❤️</div>
 
-  <div id="page3" class="page" style="background-color: #B3E5FC; color: #C21807;">
-    <h2 style="font-weight:bold;">Who am I to you?</h2>
-    <button onclick="nextPage()">Your lover</button>
-    <button onclick="nextPage()">Your little baby</button>
-    <button onclick="nextPage()">Both</button>
+  <canvas id="confetti-canvas"></canvas>
 
-    <h2>How much do you love me?</h2>
-    <button onclick="nextPage()">A lot</button>
-    <button onclick="nextPage()">I don't know</button>
-    <button onclick="nextPage()">I love you so much that I wanna be with you</button>
-
-    <h2>If you clicked option then - Can we make it official now?</h2>
-    <button onclick="nextPage()">Yes</button>
-    <button onclick="nextPage()">Sure</button>
-    <button onclick="nextPage()">OMG YESS</button>
-    <div class="nav-heart" onclick="nextPage()"></div>
-  </div>
-
-  <div id="page4" class="page" style="background-color: #A1887F; color: white;">
-    <h2 style="font-weight: bold;">What I feel for you - Playlist</h2>
-    <a href="https://open.spotify.com/track/3afkJSKX0EAMsJXTZnDXXJ?si=vnyErOxMSs6nmRxPmKKADA" target="_blank">1. Strawberry and Cigarettes - Troye Sivan</a><br><br>
-    <a href="https://open.spotify.com/track/0cQVqPuHQP4KEwc7ZUQmj6?si=xlkygsETRqeQ_wY-4NGMfA" target="_blank">2. Sweater Weather - The Neighbourhood</a><br><br>
-    <a href="https://open.spotify.com/track/1SMNDZ0CR4W27fCU8Remqq?si=aN8eon2uRWe4_6cJ7e7wHA" target="_blank">3. Ehsan Tera Hoga Mujh Par - Mohammad Rafi</a>
-    <div class="nav-heart" onclick="nextPage()"></div>
-  </div>
-
-  <div id="page5" class="page" style="background-color: #ADD8E6; color: #C71585;">
-    <h2 style="font-weight: bold; animation: float 3s infinite alternate;">I wanted to say this in person, to look into your eyes when I did… but I can’t wait anymore. I really like you — more than I’ve ever liked anyone.</h2>
-    <div class="nav-heart" onclick="nextPage()"></div>
-  </div>
-
-  <div id="page6" class="page" style="background-color: #FFEFD5; color: darkred;">
-    <h2 style="font-weight: bold;">Will you be my girlfriend?</h2>
-    <button onclick="showConfetti()">YESSSS</button>
-    <button onclick="showConfetti()">A hundred times YESSSS ❤️</button>
-    <h3 id="finalMessage" style="display:none;">Thanks for letting me love you. I would cherish you for the rest of my life. I love you my darling.</h3>
-  </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
-    let currentPage = 1;
-    function nextPage() {
-      document.getElementById(`page${currentPage}`).classList.remove("active");
-      currentPage++;
-      document.getElementById(`page${currentPage}`).classList.add("active");
-    }
+    function celebrate() {
+      const message = document.getElementById('message');
+      message.style.display = 'block';
+      const duration = 5 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-    function showCard(n) {
-      for (let i = 1; i <= 3; i++) {
-        document.getElementById(`card${i}`).style.display = 'none';
-      }
-      document.getElementById(`card${n}`).style.display = 'block';
-    }
+      const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
 
-    function showConfetti() {
-      document.getElementById("finalMessage").style.display = 'block';
-      for (let i = 0; i < 100; i++) {
-        let confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.backgroundColor = ['#ff0000', '#ff69b4', '#ff1493'][Math.floor(Math.random()*3)];
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 3000);
-      }
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: Math.random(), y: Math.random() - 0.2 }
+        }));
+      }, 250);
     }
   </script>
 </body>
