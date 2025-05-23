@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Kitten</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      font-family: 'Cursive', sans-serif;
+    }
+
+    section {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2em;
+    }
+
+    #page1 {
+      background-color: #fddde6;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #444;
+      animation: floatText 3s ease-in-out infinite;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #87CEFA;
+      clip-path: polygon(50% 0%, 61% 14%, 75% 14%, 85% 25%, 85% 39%, 75% 50%, 61% 50%, 50% 60%, 39% 50%, 25% 50%, 15% 39%, 15% 25%, 25% 14%, 39% 14%);
+      animation: floatHeart 6s infinite ease-in-out;
+    }
+
+    @keyframes floatText {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .arrow {
+      font-size: 2em;
+      margin-top: 1em;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Page 1: Welcome -->
+  <section id="page1">
+    <h1>Hey Kitten! You've stumbled into a little world I made just for you.</h1>
+    <div class="arrow">↓</div>
+  </section>
+
+  <script>
+    // Add floating heart elements dynamically
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * 100 + 'vh';
+      heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+      document.getElementById('page1').appendChild(heart);
+    }
+  </script>
+</body>
+</html>
