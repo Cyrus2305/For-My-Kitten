@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Romantic Proposal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 3em 1em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1, h2 {
+      margin-bottom: 1em;
+      font-weight: bold;
+    }
+
+    #page1 {
+      background-color: #fddde6;
+      min-height: 100vh;
+      animation: floatText 3s ease-in-out infinite;
+    }
+
+    #page2 {
+      background-color: #fff0f6;
+    }
+
+    #page3 {
+      background-color: #fff5f8;
+    }
+
+    #page4 {
+      background: linear-gradient(#d2b48c, #f5f5dc);
+    }
+
+    #page5 {
+      background-color: #fffafc;
+      font-family: 'Georgia', serif;
+    }
+
+    #page6 {
+      background-color: #ffe6f0;
+    }
+
+    #finalMessage {
+      display: none;
+      background-color: #fff0f6;
+    }
+
+    @keyframes floatText {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    button {
+      margin: 1em;
+      padding: 0.8em 2em;
+      font-size: 1em;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="page1">
+    <h1>Hey Kitten! You've stumbled into a little world I made just for you.</h1>
+    <div class="heart-animation">💙💙💙</div>
+    <div class="arrow">↓</div>
+  </section>
+
+  <section id="page2">
+    <h2>Things I Want to Say</h2>
+    <p>Message 1 ❤️</p>
+    <p>Message 2 ❤️</p>
+    <p>Message 3 ❤️</p>
+  </section>
+
+  <section id="page3">
+    <h2>Let's have some fun now</h2>
+    <p>[Questions go here]</p>
+  </section>
+
+  <section id="page4">
+    <h2>The soundtrack of my feelings for you—</h2>
+    <p>[Spotify playlist goes here]</p>
+  </section>
+
+  <section id="page5">
+    <p>
+      You're mine, like dawn belongs to morning light,<br>
+      Like shadows cling to twilight's gentle might,<br>
+      Even if the winds of doubt and fear assail,<br>
+      In your arms, my heart finds its haven still.
+    </p>
+  </section>
+
+  <section id="page6">
+    <p>
+      You know… I always imagined asking you this in person — maybe while holding your hand, with the world slowing down for a second. But we’ve waited so long, and every day I feel more sure about you. So here I am, not waiting anymore.....
+    </p>
+    <h1>Will you be my girlfriend?</h1>
+    <button onclick="showFinalMessage()">Yes ❤️</button>
+    <button onclick="showFinalMessage()">Yes, I love you ❤️</button>
+  </section>
+
+  <section id="finalMessage">
+    <h2>Thanks for letting me love you.</h2>
+    <p>I would always cherish you my love. I love you.</p>
+  </section>
+
+  <script>
+    function showFinalMessage() {
+      document.getElementById('finalMessage').style.display = 'block';
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
