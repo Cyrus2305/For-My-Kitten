@@ -95,7 +95,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #FFF9C4; /* Soft pastel yellow */
+      background-color: #FFF9C4;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       overflow: hidden;
       position: relative;
@@ -182,19 +182,34 @@
     My darling,<br>
     You will never be unloved by me<br>
     You are too well tangled in my soul.</p>
-    <div class="heart-btn" onclick="location.href='page3.html'"></div>
+    <div class="heart-btn" onclick="goToNextPage()"></div>
   </div>
 
   <script>
     let current = 1;
 
     function nextCard(index) {
-      document.getElementById('card' + index).style.display = 'none';
+      const currentCard = document.getElementById('card' + index);
       const next = document.getElementById('card' + (index + 1));
-      if (next) next.style.display = 'flex';
+
+      currentCard.style.animation = 'none';
+      currentCard.offsetHeight; // trigger reflow to restart animation
+      currentCard.style.animation = 'popUp 0.5s reverse forwards';
+
+      setTimeout(() => {
+        currentCard.style.display = 'none';
+        if (next) next.style.display = 'flex';
+      }, 500);
     }
 
-    // Floating hearts
+    function goToNextPage() {
+      const card = document.getElementById('card3');
+      card.style.animation = 'popUp 0.5s reverse forwards';
+      setTimeout(() => {
+        location.href = 'page3.html';
+      }, 500);
+    }
+
     function createFloatingHeart() {
       const heart = document.createElement('div');
       heart.className = 'floating-heart';
